@@ -216,16 +216,13 @@ h1 {
   margin: 28px 0 10px;
 }
 
-.check-list, .num-list {
+.step-body ol, .step-body ul {
   max-width: 760px;
   padding-left: 22px;
   margin: 0 0 20px;
 }
-.check-list li, .num-list li {
-  margin-bottom: 10px;
-  color: var(--text-dim);
-}
-.check-list li strong, .num-list li strong { color: var(--text); }
+.step-body li { margin-bottom: 10px; color: var(--text-dim); }
+.step-body strong { color: var(--text); }
 
 .callout {
   background: rgba(31,204,140,0.07);
@@ -237,6 +234,7 @@ h1 {
   max-width: 760px;
   color: var(--text-dim);
 }
+.callout p { margin: 0; }
 .callout strong { color: var(--text); }
 .callout.warn {
   background: rgba(255,162,115,0.08);
