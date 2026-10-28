@@ -7,37 +7,41 @@ description: A step-by-step guide to designing a webpage with Claude and publish
 ## Get Claude
 {: #claude .step}
 
-1. Sign up at [claude.ai](https://claude.ai).
-2. [Claude Code Desktop](https://code.claude.com/docs/en/desktop-quickstart)
+Sign up for a free account at [claude.ai](https://claude.ai). That's it — you'll work with Claude right in the browser or the Claude app, with nothing to install.
 
-(You can also connect Claude web app to GitHub or install [Claude Code](https://code.claude.com/docs/en/quickstart) for the terminal and start it with `claude` in any folder to start.)
+(Prefer working in a terminal or the desktop Code tab? [Claude Code](https://code.claude.com/docs/en/quickstart) works too, but it needs a paid plan — Pro, Max, Team or Enterprise.)
 
 ## Get GitHub
 {: #github .step .alt}
 
-Sign up for a free account at [github.com/signup](https://github.com/signup). That's the whole step — you won't touch the website again.
+1. Sign up for a free account at [github.com/signup](https://github.com/signup).
+2. Create a new repo at [github.com/new](https://github.com/new). Name it anything (e.g. `my-site`), set it to **Public** (GitHub Pages is free for public repos), and tick **Add a README file** so it starts with a `main` branch.
 
-## Let Claude connect to GitHub
+Claude can't create the repo for you, so do this part yourself — it takes about 30 seconds.
+
+## Connect Claude to GitHub
 {: #gh-cli .step}
 
-In your Claude Code terminal, ask it to set everything up:
+1. In Claude, open **Settings → Connectors** and connect **GitHub**. When GitHub asks, install the Claude GitHub App on your account and give it access to your new repo — without this, Claude can read the repo but can't push to it.
+2. Start a chat, paste your repo's URL, and tell Claude what to build:
 
 ```
-Install the GitHub CLI (gh) and log me in with
-gh auth login. Then build me a [describe your site]
-as static HTML/CSS/JS, create a public GitHub repo
-for it, push the code, and enable GitHub Pages.
+Use https://github.com/github-username/my-site.
+Build me a [describe your site] as static HTML/CSS/JS,
+then commit and push it to the main branch.
 ```
 
-Claude installs `gh`, walks you through browser login, then builds, creates the repo, pushes, and turns on Pages — all in one go. Your site is live at `https://github-username.github.io/repo-name/`.
+3. On GitHub, open your repo → **Settings → Pages**. Under **Source**, choose **Deploy from a branch**, pick `main` and `/ (root)`, and save.
+
+Give it a minute or two and your site is live at `https://github-username.github.io/my-site/`.
 
 ## Add your custom domain
 {: #domain .step .alt}
 
 1. On GitHub, open your repo → **Settings → Pages**.
 2. Under **Custom domain**, type your domain (e.g. `www.yourdomain.com`) and save.
-3. GitHub shows the DNS records you need — copy them.
-4. Log in to your domain registrar and paste those records into its DNS settings.
+3. Log in to your domain registrar and open its DNS settings.
+4. Add the records below.
 
 | Use case | Type | Host | Value |
 |---|---|---|---|
@@ -63,7 +67,7 @@ Yes, as long as the final build output is static files. Ask Claude to set up a b
 
 ### Can I keep editing with Claude later?
 
-Absolutely. Paste your current HTML/CSS back to Claude, describe the change, get the updated file, commit, push — live again in under a minute.
+Absolutely. Start a new chat, paste your repo's URL, describe the change, and ask Claude to push it — your site updates within a minute or two.
 
 ### What if my site doesn't show up?
 
