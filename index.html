@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Build & Host a Website with Claude + GitHub Pages</title>
+<meta name="description" content="A step-by-step guide to designing a webpage with Claude and publishing it for free on GitHub Pages, with a custom domain." />
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="bg-glow"></div>
+
+<header class="hero">
+  <nav class="navbar">
+    <div class="brand">
+      <span class="brand-dot"></span>
+      Claude <span class="plus">+</span> Pages
+    </div>
+    <ul class="nav-links">
+      <li><a href="#plan">1. Plan</a></li>
+      <li><a href="#build">2. Build</a></li>
+      <li><a href="#repo">3. Repo</a></li>
+      <li><a href="#deploy">4. Deploy</a></li>
+      <li><a href="#domain">5. Domain</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero-content">
+    <span class="eyebrow">Free hosting • Zero backend • ~30 minutes</span>
+    <h1>Build a website with <span class="grad-text">Claude</span>,<br/>host it on <span class="grad-text">GitHub Pages</span>,<br/>serve it from <span class="grad-text">your own domain</span>.</h1>
+    <p class="hero-sub">
+      No servers to manage. No monthly hosting bill. Just a conversation with Claude,
+      a git repo, and a DNS record. This guide walks you through every click.
+    </p>
+    <div class="hero-cta">
+      <a href="#plan" class="btn btn-primary">Start building →</a>
+      <a href="https://pages.github.com" target="_blank" rel="noopener" class="btn btn-ghost">GitHub Pages docs</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="roadmap">
+    <div class="roadmap-item"><span class="num">01</span><p>Plan your page</p></div>
+    <div class="roadmap-line"></div>
+    <div class="roadmap-item"><span class="num">02</span><p>Build with Claude</p></div>
+    <div class="roadmap-line"></div>
+    <div class="roadmap-item"><span class="num">03</span><p>Push to GitHub</p></div>
+    <div class="roadmap-line"></div>
+    <div class="roadmap-item"><span class="num">04</span><p>Enable Pages</p></div>
+    <div class="roadmap-line"></div>
+    <div class="roadmap-item"><span class="num">05</span><p>Add your domain</p></div>
+  </section>
+
+  <section id="plan" class="step">
+    <div class="step-head">
+      <span class="step-tag">Step 1</span>
+      <h2>Plan what you're building</h2>
+    </div>
+    <div class="step-body">
+      <p>
+        Before you open Claude, get clear on three things — it makes the result far better:
+      </p>
+      <ul class="check-list">
+        <li><strong>Purpose:</strong> portfolio, landing page, blog, resume, product page, documentation?</li>
+        <li><strong>Content:</strong> gather your text, images, links and any copy you already have.</li>
+        <li><strong>Look &amp; feel:</strong> colors, fonts, and 2–3 sites you like the style of (send Claude links or screenshots).</li>
+      </ul>
+      <div class="callout">
+        <strong>Tip:</strong> GitHub Pages serves <em>static</em> files only — HTML, CSS, JS, images.
+        No PHP, no databases, no server-side code. Perfect for portfolios, docs, landing pages,
+        and most small business sites.
+      </div>
+    </div>
+  </section>
+
+  <section id="build" class="step alt">
+    <div class="step-head">
+      <span class="step-tag">Step 2</span>
+      <h2>Build the page with Claude</h2>
+    </div>
+    <div class="step-body">
+      <p>Open <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a> (or Claude Code in your terminal) and describe your site. Be specific — Claude responds best to detail.</p>
+
+      <p class="label">Example prompt:</p>
+      <div class="code-block" data-copy>
+<pre><code>I want a single-page personal portfolio website.
+Sections: Hero with my name and title, About, Projects
+(3 cards), Contact with email + social links.
+Style: dark background, one accent color (teal),
+clean sans-serif, generous whitespace, mobile responsive.
+Output: a single index.html with inline CSS, no
+frameworks or build tools — it must run by just
+opening the file, and later by GitHub Pages.</code></pre>
+        <button class="copy-btn" type="button">Copy</button>
+      </div>
+
+      <p>Iterate conversationally: ask for tweaks ("make the hero bigger", "swap the accent to purple",
+      "add a dark/light toggle"). When happy, ask Claude for the final, complete file — not snippets.</p>
+
+      <div class="callout warn">
+        <strong>Keep it static.</strong> Ask Claude to avoid Node.js servers, databases, or `.env` secrets.
+        Everything needs to work as plain files opened in a browser / served statically.
+      </div>
+
+      <p class="label">A minimal structure to request</p>
+      <div class="code-block">
+<pre><code>my-website/
+├── index.html
+├── style.css
+├── script.js
+└── images/
+    └── (your assets)</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <section id="repo" class="step">
+    <div class="step-head">
+      <span class="step-tag">Step 3</span>
+      <h2>Create a GitHub repository</h2>
+    </div>
+    <div class="step-body">
+      <ol class="num-list">
+        <li>Go to <a href="https://github.com/new" target="_blank" rel="noopener">github.com/new</a>.</li>
+        <li>Name it something like <code>my-website</code> (or <code>yourusername.github.io</code> — see the box below).</li>
+        <li>Set it to <strong>Public</strong> (required for free GitHub Pages).</li>
+        <li>Click <strong>Create repository</strong>.</li>
+      </ol>
+
+      <div class="callout">
+        <strong>Naming matters:</strong> a repo literally named
+        <code>yourusername.github.io</code> is published at the root domain
+        <code>https://yourusername.github.io</code>. Any other repo name, e.g. <code>my-website</code>,
+        is published at <code>https://yourusername.github.io/my-website/</code>.
+        If you plan to use a custom domain anyway, either naming works fine.
+      </div>
+
+      <p class="label">Push your files from the terminal</p>
+      <div class="code-block" data-copy>
+<pre><code>cd my-website
+git init
+git add .
+git commit -m "Initial site"
+git branch -M main
+git remote add origin git@github.com:yourusername/my-website.git
+git push -u origin main</code></pre>
+        <button class="copy-btn" type="button">Copy</button>
+      </div>
+
+      <p>No terminal? Drag your files straight into the repo page in the browser
+      via <strong>Add file → Upload files</strong>, then commit.</p>
+    </div>
+  </section>
+
+  <section id="deploy" class="step alt">
+    <div class="step-head">
+      <span class="step-tag">Step 4</span>
+      <h2>Turn on GitHub Pages</h2>
+    </div>
+    <div class="step-body">
+      <ol class="num-list">
+        <li>In your repo, go to <strong>Settings → Pages</strong>.</li>
+        <li>Under <strong>Build and deployment</strong>, set Source to <strong>Deploy from a branch</strong>.</li>
+        <li>Choose branch <strong>main</strong> and folder <strong>/ (root)</strong>, then <strong>Save</strong>.</li>
+        <li>Wait ~1 minute. GitHub shows a green banner with your live URL:
+          <code>https://yourusername.github.io/my-website/</code></li>
+      </ol>
+
+      <div class="callout">
+        <strong>Every push redeploys automatically.</strong> Edit your files, commit, push —
+        Pages rebuilds in under a minute. No manual redeploy step needed.
+      </div>
+    </div>
+  </section>
+
+  <section id="domain" class="step">
+    <div class="step-head">
+      <span class="step-tag">Step 5</span>
+      <h2>Point your custom domain at it</h2>
+    </div>
+    <div class="step-body">
+      <p>You'll need a domain you own (e.g. bought via Namecheap, Cloudflare, GoDaddy, or Domeneshop).</p>
+
+      <p class="label">A. Add a CNAME file to your repo</p>
+      <div class="code-block" data-copy>
+<pre><code>echo "www.yourdomain.com" > CNAME
+git add CNAME
+git commit -m "Add custom domain"
+git push</code></pre>
+        <button class="copy-btn" type="button">Copy</button>
+      </div>
+      <p>Or just type your domain into <strong>Settings → Pages → Custom domain</strong> — GitHub creates the file for you.</p>
+
+      <p class="label">B. Set your DNS records</p>
+      <p>At your domain registrar's DNS settings, choose <strong>one</strong> of these setups:</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Use case</th><th>Type</th><th>Host</th><th>Value</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Root domain<br/><span class="muted">yourdomain.com</span></td><td>A</td><td>@</td><td>185.199.108.153</td></tr>
+            <tr><td></td><td>A</td><td>@</td><td>185.199.109.153</td></tr>
+            <tr><td></td><td>A</td><td>@</td><td>185.199.110.153</td></tr>
+            <tr><td></td><td>A</td><td>@</td><td>185.199.111.153</td></tr>
+            <tr><td>www subdomain<br/><span class="muted">www.yourdomain.com</span></td><td>CNAME</td><td>www</td><td>yourusername.github.io</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout">
+        <strong>Recommended:</strong> use the 4 A records for the apex/root domain
+        and the CNAME record for <code>www</code>. Then set either as your "preferred"
+        domain in GitHub Pages settings — GitHub redirects the other one to it automatically.
+      </div>
+
+      <p class="label">C. Verify in GitHub</p>
+      <ol class="num-list">
+        <li>Go back to <strong>Settings → Pages</strong>.</li>
+        <li>Enter your custom domain and save — GitHub starts a DNS check (can take a few minutes to 24h).</li>
+        <li>Once verified, tick <strong>Enforce HTTPS</strong> for a free, auto-renewed SSL certificate.</li>
+      </ol>
+
+      <div class="callout warn">
+        <strong>DNS propagation:</strong> changes can take anywhere from a few minutes to 24–48 hours
+        to take full effect worldwide. If HTTPS enforcement is greyed out, wait and check back later.
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="step alt">
+    <div class="step-head">
+      <span class="step-tag">FAQ</span>
+      <h2>Good to know</h2>
+    </div>
+    <div class="step-body faq-grid">
+      <div class="faq-item">
+        <h3>Is this really free?</h3>
+        <p>Yes — GitHub Pages hosting is free for public repositories, including HTTPS.
+        You only pay for the domain name itself if you want one.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Can I use a framework like React?</h3>
+        <p>Yes, as long as the final build output is static files. Ask Claude to set up a build
+        step (e.g. Vite) and publish the compiled <code>dist/</code> folder, or use a GitHub Action
+        to build automatically on push.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Can I keep editing with Claude later?</h3>
+        <p>Absolutely. Paste your current HTML/CSS back to Claude, describe the change,
+        get the updated file, commit, push — live again in under a minute.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What if my site doesn't show up?</h3>
+        <p>Check: repo is public, Pages source points to the right branch/folder, and there's
+        an <code>index.html</code> at the root (or the folder you selected). Hard-refresh your
+        browser — Pages can cache briefly.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>Made with Claude. Hosted on GitHub Pages.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
