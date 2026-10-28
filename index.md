@@ -8,11 +8,7 @@ description: A step-by-step guide to designing a webpage with Claude and publish
 {: #claude .step}
 
 1. Sign up at [claude.ai](https://claude.ai).
-2. Install Claude Code — the terminal app that can create files and run commands for you:
-
-```
-npm install -g @anthropic-ai/claude-code
-```
+2. Install [Claude Code](https://code.claude.com/docs/en/quickstart) — the terminal app that can create files and run commands for you:
 
 Run `claude` in any folder to start. That's it — everything else happens in chat.
 
