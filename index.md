@@ -8,9 +8,9 @@ description: A step-by-step guide to designing a webpage with Claude and publish
 {: #claude .step}
 
 1. Sign up at [claude.ai](https://claude.ai).
-2. Install [Claude Code](https://code.claude.com/docs/en/quickstart) — the terminal app that can create files and run commands for you:
+2. [Claude Code Desktop](https://code.claude.com/docs/en/desktop-quickstart)
 
-Run `claude` in any folder to start. That's it — everything else happens in chat.
+(You can also connect Claude web app to GitHub or install [Claude Code](https://code.claude.com/docs/en/quickstart) for the terminal and start it with `claude` in any folder to start.)
 
 ## Get GitHub
 {: #github .step .alt}
