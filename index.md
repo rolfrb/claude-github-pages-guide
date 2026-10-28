@@ -29,7 +29,7 @@ as static HTML/CSS/JS, create a public GitHub repo
 for it, push the code, and enable GitHub Pages.
 ```
 
-Claude installs `gh`, walks you through browser login, then builds, creates the repo, pushes, and turns on Pages — all in one go. Your site is live at `https://yourusername.github.io/repo-name/`.
+Claude installs `gh`, walks you through browser login, then builds, creates the repo, pushes, and turns on Pages — all in one go. Your site is live at `https://github-username.github.io/repo-name/`.
 
 ## Add your custom domain
 {: #domain .step .alt}
@@ -45,7 +45,7 @@ Claude installs `gh`, walks you through browser login, then builds, creates the 
 |  | A | @ | 185.199.109.153 |
 |  | A | @ | 185.199.110.153 |
 |  | A | @ | 185.199.111.153 |
-| www subdomain | CNAME | www | yourusername.github.io |
+| www subdomain | CNAME | www | github-username.github.io |
 
 > **Then:** back in Settings → Pages, wait for the green check, tick **Enforce HTTPS**. Done — your domain is live. Can take up to 24h to propagate.
 {: .callout}
