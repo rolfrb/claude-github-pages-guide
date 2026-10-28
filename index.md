@@ -45,10 +45,6 @@ Give it a minute or two and your site is live at `https://github-username.github
 
 | Use case | Type | Host | Value |
 |---|---|---|---|
-| Root domain | A | @ | 185.199.108.153 |
-|  | A | @ | 185.199.109.153 |
-|  | A | @ | 185.199.110.153 |
-|  | A | @ | 185.199.111.153 |
 | www subdomain | CNAME | www | github-username.github.io |
 
 > **Then:** back in Settings → Pages, wait for the green check, tick **Enforce HTTPS**. Done — your domain is live. Can take up to 24h to propagate.
