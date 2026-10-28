@@ -47,7 +47,7 @@ code {
     radial-gradient(600px 400px at 100% 10%, rgba(31,204,140,0.15), transparent 60%);
 }
 
-header.hero, main, footer.site-footer { position: relative; z-index: 1; }
+header.hero, main { position: relative; z-index: 1; }
 
 .navbar {
   max-width: var(--max);
@@ -93,6 +93,7 @@ header.hero, main, footer.site-footer { position: relative; z-index: 1; }
   max-width: var(--max);
   margin: 0 auto;
   padding: 72px 24px 56px;
+  text-align: center;
 }
 
 .eyebrow {
@@ -183,14 +184,14 @@ h1 {
 }
 
 .step {
-  padding: 64px 24px;
-  border-top: 1px solid var(--border);
+  padding: 32px 24px;
 }
 .step.alt { background: var(--bg-soft); }
 
 .step-head, .step-body {
   max-width: var(--max);
   margin: 0 auto;
+  text-align: center;
 }
 
 .step-tag {
@@ -205,11 +206,11 @@ h1 {
 
 .step-head h2 {
   font-size: clamp(1.5rem, 3vw, 2.1rem);
-  margin: 0 0 28px;
+  margin: 0 0 16px;
   letter-spacing: -0.01em;
 }
 
-.step-body p { color: var(--text-dim); margin: 0 0 16px; max-width: 760px; }
+.step-body p { color: var(--text-dim); margin: 0 auto 10px; max-width: 760px; }
 .step-body .label {
   color: var(--text);
   font-weight: 600;
@@ -248,9 +249,10 @@ h1 {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 18px 20px;
-  margin: 0 0 20px;
+  margin: 0 auto 20px;
   max-width: 760px;
   overflow-x: auto;
+  text-align: center;
 }
 .code-block pre { margin: 0; }
 .code-block code {
@@ -306,11 +308,3 @@ th { color: var(--text); font-weight: 600; }
   margin: 0 0 8px;
 }
 .faq-item p { margin: 0; }
-
-.site-footer {
-  text-align: center;
-  padding: 36px 24px;
-  color: var(--text-dim);
-  font-size: 0.85rem;
-  border-top: 1px solid var(--border);
-}

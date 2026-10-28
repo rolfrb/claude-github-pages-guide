@@ -1,5 +1,5 @@
-// Transforms plain Markdown-generated HTML (h2, p, ol, pre, table, blockquote, h3)
-// into the original "step card" visual structure, then wires up copy buttons.
+// Transforms plain Markdown-generated HTML (h2, p, pre) into the original
+// "step card" visual structure, then wires up copy buttons.
 // This keeps index.md pure Markdown while preserving the custom design.
 
 (function () {
@@ -26,80 +26,46 @@
   const built = document.createDocumentFragment();
 
   sections.forEach(({ h2, rest }) => {
-    const isFaq = h2.classList.contains('faq');
-    const isAlt = h2.classList.contains('alt');
-
     const section = document.createElement('section');
     section.id = h2.id;
-    section.className = 'step' + (isAlt ? ' alt' : '');
+    section.className = 'step';
 
     const head = document.createElement('div');
     head.className = 'step-head';
     const tag = document.createElement('span');
     tag.className = 'step-tag';
-    if (isFaq) {
-      tag.textContent = 'FAQ';
-    } else {
-      stepCount += 1;
-      tag.textContent = 'Step ' + stepCount;
-    }
+    stepCount += 1;
+    tag.textContent = 'Step ' + stepCount;
     head.appendChild(tag);
     const h2Clone = document.createElement('h2');
     h2Clone.innerHTML = h2.innerHTML;
     head.appendChild(h2Clone);
 
     const body = document.createElement('div');
-    body.className = 'step-body' + (isFaq ? ' faq-grid' : '');
+    body.className = 'step-body';
 
-    if (isFaq) {
-      // group each h3 with its following siblings into a .faq-item
-      let faqItem = null;
-      rest.forEach((node) => {
-        if (node.nodeType === 1 && node.tagName === 'H3') {
-          faqItem = document.createElement('div');
-          faqItem.className = 'faq-item';
-          body.appendChild(faqItem);
-        }
-        if (faqItem) {
-          faqItem.appendChild(node);
-        } else {
-          body.appendChild(node);
-        }
-      });
-    } else {
-      rest.forEach((node) => body.appendChild(node));
+    rest.forEach((node) => body.appendChild(node));
 
-      // Wrap any top-level <table> in a scrollable wrapper.
-      Array.from(body.children).forEach((node) => {
-        if (node.tagName === 'TABLE') {
-          const wrap = document.createElement('div');
-          wrap.className = 'table-wrap';
-          node.replaceWith(wrap);
-          wrap.appendChild(node);
-        }
-      });
-
-      // Wrap whatever top-level element contains a <pre> (works whether
-      // Jekyll/Rouge adds extra highlighter divs or not) in a code-block
-      // with a copy button.
-      body.querySelectorAll('pre').forEach((pre) => {
-        let topLevel = pre;
-        while (topLevel.parentElement && topLevel.parentElement !== body) {
-          topLevel = topLevel.parentElement;
-        }
-        if (topLevel.closest('.code-block')) return;
-        const wrap = document.createElement('div');
-        wrap.className = 'code-block';
-        wrap.setAttribute('data-copy', '');
-        topLevel.replaceWith(wrap);
-        wrap.appendChild(topLevel);
-        const btn = document.createElement('button');
-        btn.className = 'copy-btn';
-        btn.type = 'button';
-        btn.textContent = 'Copy';
-        wrap.appendChild(btn);
-      });
-    }
+    // Wrap whatever top-level element contains a <pre> (works whether
+    // Jekyll/Rouge adds extra highlighter divs or not) in a code-block
+    // with a copy button.
+    body.querySelectorAll('pre').forEach((pre) => {
+      let topLevel = pre;
+      while (topLevel.parentElement && topLevel.parentElement !== body) {
+        topLevel = topLevel.parentElement;
+      }
+      if (topLevel.closest('.code-block')) return;
+      const wrap = document.createElement('div');
+      wrap.className = 'code-block';
+      wrap.setAttribute('data-copy', '');
+      topLevel.replaceWith(wrap);
+      wrap.appendChild(topLevel);
+      const btn = document.createElement('button');
+      btn.className = 'copy-btn';
+      btn.type = 'button';
+      btn.textContent = 'Copy';
+      wrap.appendChild(btn);
+    });
 
     section.appendChild(head);
     section.appendChild(body);
