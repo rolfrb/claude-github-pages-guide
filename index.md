@@ -41,7 +41,7 @@ Give it a minute or two and your site is live at `https://github-username.github
 1. On GitHub, open your repo → **Settings → Pages**.
 2. Under **Custom domain**, type your domain (e.g. `www.yourdomain.com`) and save.
 3. Log in to your domain registrar and open its DNS settings.
-4. Add the records below.
+4. Add the record below.
 
 | Use case | Type | Host | Value |
 |---|---|---|---|
